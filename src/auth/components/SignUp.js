@@ -44,13 +44,13 @@ class SignUp extends Component {
       <form className='auth-form' onSubmit={this.signUp}>
         <h3>Sign Up</h3>
 
-        <label htmlFor="email">Email</label>
+        <label htmlFor="text">Username</label>
         <input
           required
           name="email"
           value={email}
-          type="email"
-          placeholder="Email"
+          type="text"
+          placeholder="Username"
           onChange={this.handleChange}
         />
         <label htmlFor="password">Password</label>
