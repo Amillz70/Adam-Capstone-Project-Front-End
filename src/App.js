@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.scss'
 import { Route, Link } from 'react-router-dom'
+import ChatScreen from './components/ChatScreen.js'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
@@ -8,10 +9,8 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
+import Chatroom from './auth/components/Chatroom'
 
-// import { Sidebar } from './containers/Sidebar.js'
-// import { MessageList } from './containers/MessageList.js'
-// import { AddMessage } from './containers/AddMessage.js'
 
 class App extends Component {
   constructor () {
@@ -52,6 +51,9 @@ class App extends Component {
           <Route path='/sign-in' render={() => (
             <SignIn flash={this.flash} setUser={this.setUser} />
           )} />
+          <AuthenticatedRoute user={user} path='/chatroom' render={() => (
+            <Chatroom flash={this.flash} user={user} />
+          )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut flash={this.flash} clearUser={this.clearUser} user={user} />
           )} />
@@ -59,7 +61,8 @@ class App extends Component {
             <ChangePassword flash={this.flash} user={user} />
           )} />
         </main>
-
+        <div>
+        </div>
       </React.Fragment>
     )
   }
