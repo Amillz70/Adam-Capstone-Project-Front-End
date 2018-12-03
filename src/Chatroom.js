@@ -1,115 +1,61 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-// import Message from './components/Message'
+import io from 'socket.io-client'
 
-// import { signIn } from '../api'
-// import messages from '../messages'
-// import apiUrl from '../../apiConfig'
 
 class Chatroom extends Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
 
     this.state = {
-      name: '',
+      username: '',
       message: '',
-      currentRoom: ''
+      messages: []
     }
+
+    this.sendMessage = ev => {
+      ev.preventDefault()
+      this.socket.emit('SEND_MESSAGE', {
+        author: this.state.username,
+        message: this.state.message
+      })
+      this.setState({message: ''})
+    }
+    this.socket = io('localhost:7165')
+
   }
 
 
-
-    // handleChange = event => this.setState({
-    //   [event.target.name]: event.target.value
-    // })
-
-    Chatroom = event => {
-      event.preventDefault()
-
-      const { name, message } = this.state
-      const { flash, history, setUser } = this.props
-
-      Chatroom(this.state)
-        .then(res => res.ok ? res : new Error())
-        .then(res => res.json())
-        .then(res => setUser(res.user))
-        .then(() => flash(messages.signInSuccess, 'flash-success'))
-        .then(() => history.push('/'))
-        .catch(() => flash(messages.signInFailure, 'flash-error'))
-    }
-
-    // componentDidMount () {
-    //   const chatManager = new Chatkit.ChatManager({
-    //     instanceLocator: 'YOUR INSTANCE LOCATOR',
-    //     userId: this.props.currentUsername,
-    //     tokenProvider: new Chatkit.TokenProvider({
-    //       url: 'http://localhost:7165/chatroom',
-    //     }),
-    //   })
-
-  //   chatManager
-  //     .connect()
-  //     .then(currentUser => {
-  //       this.setState({ currentUser })
-  //       return currentUser.subscribeToRoom({
-  //         roomId: 'YOUR ROOM ID',
-  //         messageLimit: 100,
-  //         hooks: {
-  //           onMessage: message => {
-  //             this.setState({
-  //               messages: [...this.state.messages, message],
-  //             })
-  //           },
-  //         },
-  //       })
-  //     })
-  //     .then(currentRoom => {
-  //       this.setState({ currentRoom })
-  //     })
-  //     .catch(error => console.error('error', error))
-  // }
-
-    render () {
-    // const { name, message } = this.state
-      const styles = {
-        container: {
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-        },
-        chatContainer: {
-          display: 'flex',
-          flex: 1,
-        },
-        whosOnlineListContainer: {
-          width: '300px',
-          flex: 'none',
-          padding: 20,
-          backgroundColor: '#2c303b',
-          color: 'white',
-        },
-        chatListContainer: {
-          padding: 20,
-          width: '85%',
-          display: 'flex',
-          flexDirection: 'column',
-        },
-      }
-
-      return (
-        <div style={styles.container}>
-          <div style={styles.chatContainer}>
-            <aside style={styles.whosOnlineListContainer}>
-              <h2>PLACEHOLDER</h2>
-            </aside>
-            <section style={styles.chatListContainer}>
-              <h2>Chat PLACEHOLDER</h2>
-            </section>
+  render(){
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-4">
+            <div className="card">
+              <div className="card-body">
+                <div className="card-title">Global Chat</div>
+                <hr/>
+                <div className="messages">
+                  {this.state.messages.map(message => {
+                    return (
+                      <div key={message.author}>{message.author}: {message.message}</div>
+                    )
+                  })}
+                </div>
+                <div className="footer">
+                  <input type="text" placeholder="Username" value={this.state.username} onChange={ev => this.setState({username: ev.target.value})} className="form-control"/>
+                  <br/>
+                  <input type="text" placeholder="Message" className="form-control" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})}/>
+                  <br/>
+                  <button className="btn btn-primary form-control">Send</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      )
-    }
+      </div>
+    )
+  }
 }
-
 
 export default withRouter(Chatroom)

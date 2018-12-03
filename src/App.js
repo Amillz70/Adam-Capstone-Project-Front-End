@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.scss'
 import { Route, Link } from 'react-router-dom'
 import ChatScreen from './components/ChatScreen.js'
+import io from 'socket.io-client'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
