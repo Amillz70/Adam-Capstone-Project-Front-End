@@ -9,9 +9,9 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
-import { Sidebar } from "./containers/Sidebar.js"
-import { MessageList } from "./containers/MessageList.js"
-import { AddMessage } from "./containers/AddMessage.js"
+import { Sidebar } from './containers/Sidebar.js'
+import { MessageList } from './containers/MessageList.js'
+import { AddMessage } from './containers/AddMessage.js'
 
 class App extends Component {
   constructor () {
