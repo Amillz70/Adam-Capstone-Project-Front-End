@@ -9,7 +9,7 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
-import Chatroom from './auth/components/Chatroom'
+import Chatroom from './Chatroom'
 
 
 class App extends Component {

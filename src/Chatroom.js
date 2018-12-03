@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 // import Message from './components/Message'
 
 // import { signIn } from '../api'
-import messages from '../messages'
+// import messages from '../messages'
 // import apiUrl from '../../apiConfig'
 
 class Chatroom extends Component {
