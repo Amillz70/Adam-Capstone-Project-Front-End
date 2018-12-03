@@ -9,6 +9,10 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
+import { Sidebar } from "./containers/Sidebar.js"
+import { MessageList } from "./containers/MessageList.js"
+import { AddMessage } from "./containers/AddMessage.js"
+
 class App extends Component {
   constructor () {
     super()
@@ -40,7 +44,7 @@ class App extends Component {
       <React.Fragment>
         <Header user={user} />
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
-        
+
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp flash={this.flash} setUser={this.setUser} />
@@ -55,6 +59,12 @@ class App extends Component {
             <ChangePassword flash={this.flash} user={user} />
           )} />
         </main>
+
+        <div>
+          <Sidebar />
+          <MessageList />
+          <AddMessage />
+        </div>
       </React.Fragment>
     )
   }
