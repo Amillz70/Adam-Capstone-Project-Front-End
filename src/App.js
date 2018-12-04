@@ -4,6 +4,8 @@ import { Route, Link } from 'react-router-dom'
 import ChatScreen from './components/ChatScreen.js'
 import io from 'socket.io-client'
 
+const socket = io('http://localhost:4741')
+
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
 import SignUp from './auth/components/SignUp'
@@ -20,7 +22,9 @@ class App extends Component {
     this.state = {
       user: null,
       flashMessage: '',
-      flashType: null
+      flashType: null,
+      response: false,
+      endpoint: 'http://localhost:7165'
     }
   }
 
@@ -35,6 +39,13 @@ class App extends Component {
 
     this.messageTimeout = setTimeout(() => this.setState({flashMessage: null
     }), 2000)
+  }
+
+  componentDidMount() {
+    const { endpoint } = this.state
+    // const socket = io(endpoint)
+    socket.on('FromAPI', data => this.setState({ response: data }))
+    socket.emit('connection')
   }
 
   render () {
