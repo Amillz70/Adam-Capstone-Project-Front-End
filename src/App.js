@@ -14,6 +14,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import Chatroom from './Chatroom'
+import NewChatroom from './ChatroomNew'
 
 
 class App extends Component {
@@ -73,9 +74,11 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword flash={this.flash} user={user} />
           )} />
+          <AuthenticatedRoute user={user} path='/new-chatroom' render={() => (
+            <NewChatroom flash={this.flash} user={user} />
+          )} />
         </main>
         <div>
-          <Layout title="Chat Up"/>
         </div>
       </React.Fragment>
     )
