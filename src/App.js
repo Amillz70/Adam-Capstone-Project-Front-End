@@ -3,6 +3,7 @@ import './App.scss'
 import { Route, Link } from 'react-router-dom'
 import ChatScreen from './components/ChatScreen.js'
 import io from 'socket.io-client'
+import Layout from './components/Layout.js'
 
 const socket = io('http://localhost:4741')
 
@@ -74,6 +75,7 @@ class App extends Component {
           )} />
         </main>
         <div>
+          <Layout title="Chat Up"/>
         </div>
       </React.Fragment>
     )

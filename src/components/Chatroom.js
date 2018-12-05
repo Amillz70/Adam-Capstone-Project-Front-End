@@ -1,114 +1,75 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
-// import Message from './components/Message'
-
-// import { signIn } from '../api'
-// import messages from '../messages'
-// import apiUrl from '../../apiConfig'
-
-class Chatroom extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      name: '',
-      message: '',
-      messages: []
-    }
-  }
-
-
-
-  // handleChange = event => this.setState({
-  //   [event.target.name]: event.target.value
-  // })
-
-  // Chatroom = event => {
-  //   event.preventDefault()
-  //
-  //   const { name, message } = this.state
-  //   const { flash, history, setUser } = this.props
-  //
-  //   Chatroom(this.state)
-  //     .then(res => res.ok ? res : new Error())
-  //     .then(res => res.json())
-  //     .then(res => setUser(res.user))
-  //     .then(() => flash(messages.signInSuccess, 'flash-success'))
-  //     .then(() => history.push('/'))
-  //     .catch(() => flash(messages.signInFailure, 'flash-error'))
-  // }
-
-  // componentDidMount () {
-  //   const chatManager = new Chatkit.ChatManager({
-  //     instanceLocator: 'YOUR INSTANCE LOCATOR',
-  //     userId: this.props.currentUsername,
-  //     tokenProvider: new Chatkit.TokenProvider({
-  //       url: 'http://localhost:7165/chatroom',
-  //     }),
-  //   })
-
-  //   chatManager
-  //     .connect()
-  //     .then(currentUser => {
-  //       this.setState({ currentUser })
-  //       return currentUser.subscribeToRoom({
-  //         roomId: 'YOUR ROOM ID',
-  //         messageLimit: 100,
-  //         hooks: {
-  //           onMessage: message => {
-  //             this.setState({
-  //               messages: [...this.state.messages, message],
-  //             })
-  //           },
-  //         },
-  //       })
-  //     })
-  //     .then(currentRoom => {
-  //       this.setState({ currentRoom })
-  //     })
-  //     .catch(error => console.error('error', error))
-  // }
-
-  render () {
-  
-    const styles = {
-      container: {
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-      },
-      chatContainer: {
-        display: 'flex',
-        flex: 1,
-      },
-      whosOnlineListContainer: {
-        width: '300px',
-        flex: 'none',
-        padding: 20,
-        backgroundColor: '#2c303b',
-        color: 'white',
-      },
-      chatListContainer: {
-        padding: 20,
-        width: '85%',
-        display: 'flex',
-        flexDirection: 'column',
-      },    }
-
-    return (
-      <div style={styles.container}>
-        <div style={styles.chatContainer}>
-          <aside style={styles.whosOnlineListContainer}>
-            <h2>PLACEHOLDER</h2>
-          </aside>
-          <section style={styles.chatListContainer}>
-            <h2>Chat PLACEHOLDER</h2>
-          </section>
-        </div>
-      </div>
-    )
-  }
-}
-
-
-export default withRouter(Chatroom)
+// import React, { Component } from 'react'
+// import ChatInput from './ChatInput'
+// import ChatMessage from './ChatMessage'
+//
+// const URL = 'ws://localhost:3030'
+//
+// class Chat extends Component {
+//   state = {
+//     name: 'Bob',
+//     messages: [],
+//   }
+//
+//   ws = new WebSocket(URL)
+//
+//   componentDidMount() {
+//     this.ws.onopen = () => {
+//       // on connecting, do nothing but log it to the console
+//       console.log('connected')
+//     }
+//
+//     this.ws.onmessage = evt => {
+//       // on receiving a message, add it to the list of messages
+//       const message = JSON.parse(evt.data)
+//       this.addMessage(message)
+//     }
+//
+//     this.ws.onclose = () => {
+//       console.log('disconnected')
+//       // automatically try to reconnect on connection loss
+//       this.setState({
+//         ws: new WebSocket(URL),
+//       })
+//     }
+//   }
+//
+//   addMessage = message =>
+//     this.setState(state => ({ messages: [message, ...state.messages] }))
+//
+//   submitMessage = messageString => {
+//     // on submitting the ChatInput form, send the message, add it to the list and reset the input
+//     const message = { name: this.state.name, message: messageString }
+//     this.ws.send(JSON.stringify(message))
+//     this.addMessage(message)
+//   }
+//
+//   render() {
+//     return (
+//       <div>
+//         <label htmlFor="name">
+//           Name:&nbsp;
+//           <input
+//             type="text"
+//             id={'name'}
+//             placeholder={'Enter your name...'}
+//             value={this.state.name}
+//             onChange={e => this.setState({ name: e.target.value })}
+//           />
+//         </label>
+//         <ChatInput
+//           ws={this.ws}
+//           onSubmitMessage={messageString => this.submitMessage(messageString)}
+//         />
+//         {this.state.messages.map((message, index) =>
+//           <ChatMessage
+//             key={index}
+//             message={message.message}
+//             name={message.name}
+//           />,
+//         )}
+//       </div>
+//     )
+//   }
+// }
+//
+// export default Chat

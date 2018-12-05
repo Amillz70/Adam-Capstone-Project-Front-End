@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import io from 'socket.io-client'
-import API_BASE_URL from './apiConfig.js'
+import API_BASE_URL from './config/api.js'
 
-
-class Chatroom extends Component {
+class ChatroomNew extends Component {
   constructor () {
     super()
 
     this.state = {
-      username: '',
-      message: '',
-      messages: []
+      chatroom: {
+        username: '',
+        message: '',
+        messages: []
+      }
     }
   }
 
@@ -68,4 +69,4 @@ class Chatroom extends Component {
   }
 }
 
-export default withRouter(Chatroom)
+export default withRouter(ChatroomNew)
