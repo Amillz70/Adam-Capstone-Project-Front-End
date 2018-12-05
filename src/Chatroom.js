@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom'
 import io from 'socket.io-client'
 import API_BASE_URL from './apiConfig.js'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import Layout from './Layout'
 
 
 class Chatroom extends Component {
@@ -10,26 +12,79 @@ class Chatroom extends Component {
     super(props)
 
     this.state = {
-      chatroom: []
+      user: props.user,
+      chatrooms: []
     }
+    this.chatroom = this.state.chatroom
   }
 
 
   async componentDidMount() {
-    //const response = await axios.get(`${constants.API_BASE_URL}/chatroom/${this.props.match.params.id}`)
-    const response = await axios.get('http://localhost:4741/chatroom')
-    this.setState({movie: response.data.chatroom})
+    const response = await axios.get(`${API_BASE_URL}/chatrooms`,
+      { headers: {
+        'Content-Type': 'application/json',
+        'Authorization':`Token token=${this.state.user.token}`}
+      }
+    )
+    // const response = await axios.get('http://localhost:4741/chatroom')
+    this.setState({chatrooms: response.data.chatrooms})
+  }
+
+  async deleteChatroom(event, chatroomId) {
+    event.preventDefault()
+
+    await axios.delete(`${API_BASE_URL}/chatrooms/${chatroomId}`,
+      { headers: {
+        'Content-Type': 'application/json',
+        'Authorization':`Token token=${this.state.user.token}`}
+      }
+    )
+    this.setState({chatrooms: this.state.chatrooms.filter(chatroom => chatroom._id !== chatroomId)})
   }
 
   render() {
+    //
+    //     const {chatroom} = this.state
+    //
+    //     return (
+    //       <React.Fragment>
+    //         <h1>Chatroom name: {chatroom.title}</h1>
+    //
+    //         <p>Max Number of users: {chatroom.maxNumber}</p>
+    //       </React.Fragment>
+    //     )
+    //   }
+    // }
+    const chatroomRows = this.state.chatrooms.map(chatroom => {
+      return (
+        <tr key={chatroom._id}>
+          <td>
+            <p>Chatroom Name:</p>
+            <Link to={`/chatrooms/${chatroom._id}`}>{chatroom.title}</Link>
+            <p>Max users:</p>
+            <h6>{chatroom.maxNumber}</h6>
+            <br />
+          </td>
 
-    const {chatroom} = this.state
-
+          <td>
+            <Link to={`/chatrooms/${chatroom._id}/edit`}>update</Link> | <a href="" onClick={(event) => this.deleteChatroom(event, chatroom._id)}>delete</a>
+          </td>
+        </tr>
+      )
+    })
     return (
       <React.Fragment>
-        <h1>Chatroom name: {chatroom.title}</h1>
+        <Layout>
+          <h1>Chatrooms</h1>
 
-        <p>Max Number of users: {chatroom.maxNumber}</p>
+          <table>
+            <tbody>
+
+              {chatroomRows}
+
+            </tbody>
+          </table>
+        </Layout>
       </React.Fragment>
     )
   }

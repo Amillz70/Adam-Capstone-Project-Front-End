@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.scss'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import ChatScreen from './components/ChatScreen.js'
 import io from 'socket.io-client'
 import Layout from './components/Layout.js'
@@ -14,7 +14,8 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import Chatroom from './Chatroom'
-import NewChatroom from './ChatroomNew'
+import ChatroomNew from './ChatroomNew'
+import ChatroomShow from './ChatroomShow'
 
 
 class App extends Component {
@@ -59,24 +60,31 @@ class App extends Component {
         {flashMessage && <h3 className={flashType}>{flashMessage}</h3>}
 
         <main className="container">
-          <Route path='/sign-up' render={() => (
-            <SignUp flash={this.flash} setUser={this.setUser} />
-          )} />
-          <Route path='/sign-in' render={() => (
-            <SignIn flash={this.flash} setUser={this.setUser} />
-          )} />
-          <AuthenticatedRoute user={user} path='/chatroom' render={() => (
-            <Chatroom flash={this.flash} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-            <SignOut flash={this.flash} clearUser={this.clearUser} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/change-password' render={() => (
-            <ChangePassword flash={this.flash} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/new-chatroom' render={() => (
-            <NewChatroom flash={this.flash} user={user} />
-          )} />
+          <Route>
+            <Switch>
+              <Route path='/sign-up' render={() => (
+                <SignUp flash={this.flash} setUser={this.setUser} />
+              )} />
+              <Route path='/sign-in' render={() => (
+                <SignIn flash={this.flash} setUser={this.setUser} />
+              )} />
+              <AuthenticatedRoute user={user} path='/sign-out' render={() => (
+                <SignOut flash={this.flash} clearUser={this.clearUser} user={user} />
+              )} />
+              <AuthenticatedRoute user={user} path='/change-password' render={() => (
+                <ChangePassword flash={this.flash} user={user} />
+              )} />
+              <AuthenticatedRoute user={user} path='/chatrooms/new' component= {ChatroomNew} render={() => (
+                <ChatroomNew flash={this.flash} user={user} />
+              )} />
+              <AuthenticatedRoute user={user} path='/chatrooms/:id/show' component= {ChatroomShow} render={() => (
+                <ChatroomShow flash={this.flash} user={user} />
+              )} />
+              <AuthenticatedRoute user={user} path='/chatrooms' component= {Chatroom} render={() => (
+                <Chatroom flash={this.flash} user={user} />
+              )} />
+            </Switch>
+          </Route>
         </main>
         <div>
         </div>
