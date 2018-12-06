@@ -4,6 +4,7 @@ import io from 'socket.io-client'
 import API_BASE_URL from './apiConfig.js'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Layout from './Layout'
 
 
 class ChatroomShow extends Component {
@@ -11,14 +12,23 @@ class ChatroomShow extends Component {
     super(props)
 
     this.state = {
-      chatrooms: []
+      user: props.user,
+      chatroom: {
+        title: '',
+        maxNumber:''
+      },
+    // this.chatroom = this.state.chatroom
     }
   }
 
 
   async componentDidMount() {
-    // const response = await axios.get(`${constants.API_BASE_URL}/chatroom/${this.props.match.params.id}`)
-    const response = await axios.get('http://localhost:4741/chatroom')
+    const response = await axios.get(`${API_BASE_URL}/chatrooms/${this.props.match.params._id}`,
+      { headers: {
+        'Content-Type': 'application/json',
+        'Authorization':`Token token=${this.state.user.token}`}
+      }
+    )
     this.setState({chatrooms: response.data.chatrooms})
   }
 
@@ -28,9 +38,11 @@ class ChatroomShow extends Component {
 
     return (
       <React.Fragment>
-        <h1>Select a Chatroom: {this.state.chatroom}</h1>
+        <Layout>
+          <h1>Select a Chatroom: {chatroom.title}</h1>
 
-        <p>Max Number of users: {this.state.chatroom}</p>
+          <p>Max Number of users: {chatroom.maxNumber}</p>
+        </Layout>
       </React.Fragment>
     )
   }

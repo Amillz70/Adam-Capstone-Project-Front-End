@@ -26,7 +26,6 @@ class Chatroom extends Component {
         'Authorization':`Token token=${this.state.user.token}`}
       }
     )
-    // const response = await axios.get('http://localhost:4741/chatroom')
     this.setState({chatrooms: response.data.chatrooms})
   }
 
@@ -43,18 +42,7 @@ class Chatroom extends Component {
   }
 
   render() {
-    //
-    //     const {chatroom} = this.state
-    //
-    //     return (
-    //       <React.Fragment>
-    //         <h1>Chatroom name: {chatroom.title}</h1>
-    //
-    //         <p>Max Number of users: {chatroom.maxNumber}</p>
-    //       </React.Fragment>
-    //     )
-    //   }
-    // }
+
     const chatroomRows = this.state.chatrooms.map(chatroom => {
       return (
         <tr key={chatroom._id}>

@@ -22,6 +22,7 @@ class ChatroomEdit extends React.Component {
   }
 
   async componentDidMount() {
+
     const response = await axios.get(`${API_BASE_URL}/chatrooms/${this.props.match.params.id}`)
     this.setState({chatroom: response.data.chatroom})
   }
@@ -35,7 +36,7 @@ class ChatroomEdit extends React.Component {
      event.preventDefault()
 
      const chatroomParams = JSON.stringify({chatroom: this.state.chatroom})
-     await axios.put(`${constants.API_BASE_URL}/chatrooms/${this.props.match.params.id}`, chatroomParams)
+     await axios.put(`${API_BASE_URL}/chatrooms/${this.props.match.params._id}`, chatroomParams)
 
      this.props.history.push(`/chatrooms/${this.state.chatroom.id}/show`)
    }

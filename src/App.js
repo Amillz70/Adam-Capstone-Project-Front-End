@@ -16,6 +16,7 @@ import ChangePassword from './auth/components/ChangePassword'
 import Chatroom from './Chatroom'
 import ChatroomNew from './ChatroomNew'
 import ChatroomShow from './ChatroomShow'
+import ChatroomEdit from './ChatroomEdit'
 
 
 class App extends Component {
@@ -79,6 +80,9 @@ class App extends Component {
               )} />
               <AuthenticatedRoute user={user} path='/chatrooms/:id/show' component= {ChatroomShow} render={() => (
                 <ChatroomShow flash={this.flash} user={user} />
+              )} />
+              <AuthenticatedRoute user={user} path='/chatrooms/:id/edit' component= {ChatroomShow} render={() => (
+                <ChatroomEdit flash={this.flash} user={user} />
               )} />
               <AuthenticatedRoute user={user} path='/chatrooms' component= {Chatroom} render={() => (
                 <Chatroom flash={this.flash} user={user} />
