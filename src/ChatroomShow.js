@@ -23,7 +23,7 @@ class ChatroomShow extends Component {
 
 
   async componentDidMount() {
-    const response = await axios.get(`${API_BASE_URL}/chatrooms/${this.props.match.params._id}`,
+    const response = await axios.get(`${API_BASE_URL}/chatrooms/${this.props.match.params.id}`,
       { headers: {
         'Content-Type': 'application/json',
         'Authorization':`Token token=${this.state.user.token}`}

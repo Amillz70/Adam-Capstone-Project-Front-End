@@ -41,9 +41,19 @@ class ChatroomEdit extends React.Component {
      event.preventDefault()
 
      const chatroomParams = JSON.stringify({chatroom: this.state.chatroom})
-     await axios.put(`${API_BASE_URL}/chatrooms/${this.props.match.params._id}`, chatroomParams)
+     const response = await axios({method: 'patch',
+       url: `${API_BASE_URL}/chatrooms/${this.props.match.params.id}`,
+       data: chatroomParams,
+       headers: {
+         'Content-Type': 'application/json',
+         'Authorization':`Token token=${this.state.user.token}`
+       }
+     }
+     )
 
-     this.props.history.push(`/chatrooms/${this.state.chatroom._id}/show`)
+
+
+     this.props.history.push('/chatrooms/')
    }
 
    render() {
