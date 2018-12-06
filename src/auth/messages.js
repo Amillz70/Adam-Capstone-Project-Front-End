@@ -8,5 +8,9 @@ export default {
   signOutSuccess: 'Come back soon!',
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password' +
-                         ' and try again.'
+                         ' and try again.',
+  ChatroomEditSuccess: 'Chatroom updated',
+  ChatroomEditFailure: 'Chatroom failed to update, please try again',
+  deleteChatroomSuccess: 'Chatroom Deleted',
+  deleteChatroomFailure: 'Chatroom could not be deleted, make sure you own the chatroom before trying again'
 }

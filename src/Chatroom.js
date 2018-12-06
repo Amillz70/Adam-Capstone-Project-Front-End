@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom'
 import Layout from './Layout'
 
 
-class Chatroom extends Component {
+class Chatroom extends React.Component {
   constructor (props) {
     super(props)
 
     this.state = {
       user: props.user,
       chatrooms: []
-    }
+    },
     this.chatroom = this.state.chatroom
   }
 
