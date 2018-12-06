@@ -28,9 +28,13 @@ https://github.com/Amillz70/Adam-Capstone-Project-Front-End
 <li>Users should be able to create a chatroom.</li>
 <li>Users should be able to delete a chatroom, if they created it.</li>
 <li>Users should be able to update a chatroom, if they created it.</li>
+
+*Stretch Goal*
 <li>Users should be able to send messages to a joined chatroom.</li>
 </ul>
 
+
+<h3>
 ERD:
 https://imgur.com/TKpAwF8
 
@@ -39,7 +43,8 @@ https://imgur.com/d12uDZM (1st view)
 https://imgur.com/CKgBc67 (2nd view)
 
 App Screenshot:
-
+<img src="Chat-up-screeshot.png">
+</h3>
 
 ## [License](LICENSE)
 
