@@ -38,7 +38,7 @@ class ChatroomNew extends Component {
 
     this.props.history.push('/chatrooms')
 
-  
+
   }
 
 
