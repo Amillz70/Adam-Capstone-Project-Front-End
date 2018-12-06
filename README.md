@@ -2,20 +2,25 @@
 
 <h1>Chat Up</h1>
 
-<h2></h2>
+<h2>Front-End Link:</h2>
+https://github.com/Amillz70/Adam-Capstone-Project-Front-End
 
-Development Process
+<h2>Back-End Link:</h2>
 
-Back-end
+<h2>Front-End Link</h2>
+
+<h2>Development Process</h2>
+
+<h3>Back-end</h3>
 <p>This back end of this project is written in JavaScript using Express and MongoDB. I used this to create schemas for users and chatrooms. I structured the database to have a user being able to create multiple chatrooms and see other chatrooms that others have made. In the future I hope to implement messages being nested inside of the chatrooms so that multiple users can talk to one another in multiple chatrooms.</p>
 
-Front-end
+<h3>Front-end</h3>
 <p>The front end was created with React, and focused on providing a pleasant user experience. Styling was not  focused on, since the priority was meeting MVP specifications. However, I did manage to create a user experience that allows a user to quickly manage their surveys, view all surveys created, and answer surveys. I tried to provided intuitive user feedback that was also functional, but displaying the targeted data when a form is submitted or a button is pressed.</p>
 
-Planning Process
+<h3>Planning Process</h3>
 <p>I starting off with grand plans that I then needed to scale back on to meet MVP for the project in 4 days. I started by taking ample time to plan what I wanted and how to get there. Most of the work and challenge came from finding suitable goals in the time allowed. These meetings helped keep us all on the same page and kept our progress steady.</p>
 
-User Stories
+<h3>User Stories<h3>
 
 <ul>
 <li>Users should be able to Sign up, in, out, and change their password.</li>
