@@ -1,13 +1,23 @@
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
 <h1>Chat Up</h1>
+A basic chatroom creating app where a user has access to create a chatroom with a title and a Max number of members.
 
 <h2>Front-End Link:</h2>
 https://github.com/Amillz70/Adam-Capstone-Project-Front-End
 
 <h2>Back-End Link:</h2>
+https://github.com/Amillz70/Adam-Capstone-Project-Express-Api
 
 <h2>Front-End Link</h2>
+https://amillz70.github.io/Adam-Capstone-Project-Front-End/#/
+
+<h2>Back-End Link</h2>
+https://git.heroku.com/tranquil-plains-92630.git
+
+<h2>Technology Used</h2>
+
+<p>React, Javascript, Express, MongoDB, Mongoose, CSS, and HTML</p>
 
 <h2>Development Process</h2>
 
@@ -19,6 +29,9 @@ https://github.com/Amillz70/Adam-Capstone-Project-Front-End
 
 <h3>Planning Process</h3>
 <p>I starting off with grand plans that I then needed to scale back on to meet MVP for the project in 4 days. I started by taking ample time to plan what I wanted and how to get there. Most of the work and challenge came from finding suitable goals in the time allowed. These meetings helped keep us all on the same page and kept our progress steady.</p>
+
+<h3>Future Goals</h3>
+<p>The main goal for future iterations is to have each user join a chatroom and have messaging capability in the room. The plan will be to use Socket.io to help the process.</p>
 
 <h3>User Stories<h3>
 
@@ -34,7 +47,7 @@ https://github.com/Amillz70/Adam-Capstone-Project-Front-End
 </ul>
 
 
-<h3>
+<h5>
 ERD:
 https://imgur.com/TKpAwF8
 
@@ -44,7 +57,7 @@ https://imgur.com/CKgBc67 (2nd view)
 
 App Screenshot:
 <img src="../public/Chat-up-screeshot.png">
-</h3>
+</h5>
 
 ## [License](LICENSE)
 
