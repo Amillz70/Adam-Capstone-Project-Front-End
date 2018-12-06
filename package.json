@@ -1,6 +1,6 @@
 {
   "name": "react-auth-template",
-  "homepage": "https://github.io/amillz70/Adam-Capstone-Project-Front-End",
+  "homepage": "https://amillz70/github.io/Adam-Capstone-Project-Front-End",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -60,7 +60,9 @@
     "test": "node scripts/test.js --env=jsdom",
     "make-standard": "eslint --fix .",
     "nag": "eslint .",
-    "deploy": "sh scripts/deploy.sh"
+    "deploy": "sh scripts/deploy.sh",
+    "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -105,6 +107,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0"
   }
