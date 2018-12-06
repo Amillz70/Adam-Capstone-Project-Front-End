@@ -62,6 +62,13 @@ App Screenshot:
 <h2>Set up on localhost</h2>
 <ol>
 <li>Fork and clone</li>
+<li>Empty the README</li>
+<li>Ensure that you have nodemon installed by running npm install -g nodemon.</li>
+From the root of your repository, run the following commands. They will set a SECRET_KEY for development and testing.
+echo SECRET_KEY_BASE_TEST=$(openssl rand -base64 66 | tr -d '\n') >> .env
+echo SECRET_KEY_BASE_DEVELOPMENT=$(openssl rand -base64 66 | tr -d '\n') >> .env
+Ensure the API is functioning properly by running npm run server.
+Once everything is working, make an initial commit.
 <li>Install dependencies with npm install</li>
 <li>npm start</li>
 </ol>

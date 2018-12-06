@@ -3,6 +3,7 @@ import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 // import io from 'socket.io-client'
 import API_BASE_URL from './apiConfig.js'
+import messages from '../src/auth/messages'
 
 
 
@@ -51,14 +52,13 @@ class ChatroomEdit extends React.Component {
      }
      )
 
-
-
      this.props.history.push('/chatrooms/')
    }
 
+
    render() {
      const { chatroom } = this.state
-     console.log(this.props)
+     // console.log(this.props)
      return (
        <React.Fragment>
          <h1>Edit Chatroom</h1>
