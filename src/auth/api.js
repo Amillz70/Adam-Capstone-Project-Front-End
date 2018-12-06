@@ -1,4 +1,9 @@
-const apiUrl = 'http://localhost:4741'
+// const apiUrl = 'http://localhost:4741'
+let apiUrl
+const apiUrls = {
+  production: 'https://tranquil-plains-92630.herokuapp.com/',
+  development: 'http://localhost:4741'
+}
 
 export const handleErrors = res => {
   if (res.ok) {
