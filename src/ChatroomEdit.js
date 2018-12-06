@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 // import io from 'socket.io-client'
 import API_BASE_URL from './apiConfig.js'
 
@@ -14,7 +15,8 @@ class ChatroomEdit extends React.Component {
       user: props.user,
       chatroom: {
         title: '',
-        maxNumber:''
+        maxNumber:'',
+        _id: ''
       },
       flashMessage: ''
     }
@@ -46,15 +48,16 @@ class ChatroomEdit extends React.Component {
 
    render() {
      const { chatroom } = this.state
+     console.log(this.props)
      return (
        <React.Fragment>
          <h1>Edit Chatroom</h1>
          <p><input type="text" name="title" value={chatroom.title} onChange={this.handleChange} /></p>
          <p><input type="number" name="maxNumber" value={chatroom.director} onChange={this.handleChange} /></p>
-         <p><input type="submit" value="Submit" onClick={(event) => this.handleSubmit(event, user)} /></p>
+         <p><input type="submit" value="Submit" onClick={(event) => this.handleSubmit(event, this.state.user)} /></p>
        </React.Fragment>
      )
    }
 }
 
-export default ChatroomEdit
+export default withRouter(ChatroomEdit)

@@ -14,8 +14,8 @@ class Chatroom extends React.Component {
     this.state = {
       user: props.user,
       chatrooms: []
-    },
-    this.chatroom = this.state.chatroom
+    }
+    // this.chatroom = this.state.chatroom
   }
 
 

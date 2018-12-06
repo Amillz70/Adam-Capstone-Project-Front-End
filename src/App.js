@@ -81,7 +81,7 @@ class App extends Component {
               <AuthenticatedRoute user={user} path='/chatrooms/:id/show' component= {ChatroomShow} render={() => (
                 <ChatroomShow flash={this.flash} user={user} />
               )} />
-              <AuthenticatedRoute user={user} path='/chatrooms/:id/edit' component= {ChatroomShow} render={() => (
+              <AuthenticatedRoute user={user} path='/chatrooms/:id/edit' component= {ChatroomEdit} render={() => (
                 <ChatroomEdit flash={this.flash} user={user} />
               )} />
               <AuthenticatedRoute user={user} path='/chatrooms' component= {Chatroom} render={() => (

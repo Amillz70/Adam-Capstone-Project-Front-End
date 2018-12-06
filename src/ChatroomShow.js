@@ -17,8 +17,8 @@ class ChatroomShow extends Component {
         title: '',
         maxNumber:''
       },
-    // this.chatroom = this.state.chatroom
     }
+    this.chatroom = this.state.chatroom
   }
 
 
