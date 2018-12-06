@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 import { USER_CONNECTED } from '../Events.js'
 
 const socketUrl = 'http://localhost:7165/'

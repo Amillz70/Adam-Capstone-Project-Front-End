@@ -5,7 +5,7 @@ import ChatScreen from './components/ChatScreen.js'
 import io from 'socket.io-client'
 import Layout from './components/Layout.js'
 
-const socket = io('http://localhost:4741')
+// const socket = io('http://localhost:4741')
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
@@ -48,8 +48,8 @@ class App extends Component {
   componentDidMount() {
     const { endpoint } = this.state
     // const socket = io(endpoint)
-    socket.on('FromAPI', data => this.setState({ response: data }))
-    socket.emit('connection')
+    //socket.on('FromAPI', data => this.setState({ response: data }))
+    //socket.emit('connection')
   }
 
   render () {

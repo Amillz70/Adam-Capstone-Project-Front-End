@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 import API_BASE_URL from './apiConfig.js'
 import axios from 'axios'
 
