@@ -24,14 +24,6 @@ class ChatroomEdit extends React.Component {
     this.chatroom = this.state.chatroom
   }
 
-  // async componentDidMount() {
-  //   // console.log(params._id)
-  //   // const { id } = this.props.match.params._id
-  //
-  //   const response = await axios.get(`${API_BASE_URL}/chatrooms/${id}`)
-  //   this.setState({chatroom: response.data.chatroom})
-  // }
-
    handleChange = (event) => {
      const editedChatroom = {...this.state.chatroom, [event.target.name]: event.target.value}
      this.setState({chatroom: editedChatroom})
@@ -55,6 +47,17 @@ class ChatroomEdit extends React.Component {
      this.props.history.push('/chatrooms/')
    }
 
+   chatroomEdit = event => {
+     event.preventDefault()
+
+     const { title, maxNumber } = this.state
+     const { flash } = this.props
+
+     chatroomEdit(this.state)
+       .then(() => flash(messages.handleSubmitSuccess, 'flash-success'))
+       .then(() => history.push('/chatrooms/'))
+       .catch(() => flash(messages.handleSubmitFailure, 'flash-error'))
+   }
 
    render() {
      const { chatroom } = this.state

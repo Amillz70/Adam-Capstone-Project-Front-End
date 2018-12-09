@@ -18,14 +18,30 @@ class Chatroom extends React.Component {
     // this.chatroom = this.state.chatroom
   }
 
+  // onGetChatroom() {
+  //
+  // }
 
   async componentDidMount() {
+
+  //   const response = await axios({method: 'get',
+  //     url: `${API_BASE_URL}/chatrooms`,
+  //     //  data: chatroomParams,
+  //     headers: {
+  //       // 'Content-Type': 'application/json',
+  //       'Authorization':`Token token=${this.state.user.token}`
+  //     }
+  //   }
+  //   )
+  // }
+
     const response = await axios.get(`${API_BASE_URL}/chatrooms`,
       { headers: {
         'Content-Type': 'application/json',
         'Authorization':`Token token=${this.state.user.token}`}
       }
     )
+    // console.log()
     this.setState({chatrooms: response.data.chatrooms})
   }
 
