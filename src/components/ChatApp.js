@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
 import Input from './Input'
+import MessageList from './MessageList'
 
 class ChatApp extends Component {
   constructor(props) {
@@ -61,6 +62,7 @@ class ChatApp extends Component {
     return (
       <div className="chatapp">
         <h2 className="header">Lets Chat</h2>
+        <MessageList messages={this.state.messages} />
         <Input className="input-field" onSubmit={this.addMessage} />
       </div>
     )
