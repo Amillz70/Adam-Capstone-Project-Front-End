@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import './App.scss'
 import { Route, Link, Switch } from 'react-router-dom'
-import ChatScreen from './components/ChatScreen.js'
-import io from 'socket.io-client'
 import Layout from './components/Layout.js'
 
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
@@ -15,7 +13,6 @@ import Chatroom from './Chatroom'
 import ChatroomNew from './ChatroomNew'
 import ChatroomShow from './ChatroomShow'
 import ChatroomEdit from './ChatroomEdit'
-import Message from './Message'
 
 import ChatMessage from './components/ChatMessage'
 
