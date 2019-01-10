@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-// import io from 'socket.io-client'
 import API_BASE_URL from './apiConfig.js'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Layout from './Layout'
 
+import ChatMessage from './components/ChatMessage'
 
 class ChatroomShow extends Component {
   constructor (props) {
@@ -13,14 +13,19 @@ class ChatroomShow extends Component {
 
     this.state = {
       user: props.user,
-      chatroom: {
-        title: '',
-        maxNumber:''
-      },
+      // chatroom: {
+      //   title: '',
+      //   maxNumber:''
+      currentView: 'ChatMessage'
     }
-    this.chatroom = this.state.chatroom
+    this.changeView = this.changeView.bind(this)
   }
 
+  changeView(view) {
+    this.setState({
+      currentView: view
+    })
+  }
 
   async componentDidMount() {
     const response = await axios.get(`${API_BASE_URL}/chatrooms/${this.props.match.params.id}`,
@@ -29,44 +34,22 @@ class ChatroomShow extends Component {
         'Authorization':`Token token=${this.state.user.token}`}
       }
     )
-    this.setState({chatrooms: response.data.chatrooms})
+    // this.setState({chatrooms: response.data.chatrooms})
   }
 
   render() {
 
-    const {chatroom} = this.state
-
+    let view =''
+    if (this.state.currentView === 'ChatMessage') {
+      view = <ChatMessage  changeView={this.changeView}/>
+    }
     return (
-      <React.Fragment>
-        <Layout>
-          <h1>Select a Chatroom: {chatroom.title}</h1>
-
-          <p>Max Number of users: {chatroom.maxNumber}</p>
-        </Layout>
-      </React.Fragment>
+      <div className="App">
+        {view}
+      </div>
     )
   }
 }
-//     const chatroomRows = this.state.chatrooms.map(chatroom => {
-//       return (
-//         <tr key={chatroom.id}>
-//           <td>
-//             <Link to={`/chatrooms/${chatroom.id}/show`}>{chatroom.title}</Link></td>
-//         </tr>
-//       )
-//     })
-//     return (
-//       <React.Fragment>
-//         <h1>Chatrooms</h1>
-//
-//         <table>
-//           <tbody>
-//             {chatroomRows}
-//           </tbody>
-//         </table>
-//       </React.Fragment>
-//     )
-//   }
-// }
+
 
 export default withRouter(ChatroomShow)

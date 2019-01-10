@@ -5,8 +5,6 @@ import ChatScreen from './components/ChatScreen.js'
 import io from 'socket.io-client'
 import Layout from './components/Layout.js'
 
-// const socket = io('http://localhost:4741')
-
 import AuthenticatedRoute from './auth/components/AuthenticatedRoute'
 import Header from './header/Header'
 import SignUp from './auth/components/SignUp'
@@ -17,6 +15,9 @@ import Chatroom from './Chatroom'
 import ChatroomNew from './ChatroomNew'
 import ChatroomShow from './ChatroomShow'
 import ChatroomEdit from './ChatroomEdit'
+import Message from './Message'
+
+import ChatMessage from './components/ChatMessage'
 
 
 class App extends Component {
@@ -77,6 +78,9 @@ class App extends Component {
               )} />
               <AuthenticatedRoute user={user} path='/chatrooms/new' component= {ChatroomNew} render={() => (
                 <ChatroomNew flash={this.flash} user={user} />
+              )} />
+              <AuthenticatedRoute user={user} path='/chatrooms/:id' component= {ChatroomShow} render={() => (
+                <ChatroomShow flash={this.flash} user={user} />
               )} />
               <AuthenticatedRoute user={user} path='/chatrooms/:id/show' component= {ChatroomShow} render={() => (
                 <ChatroomShow flash={this.flash} user={user} />
