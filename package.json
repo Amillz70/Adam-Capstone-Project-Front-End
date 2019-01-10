@@ -60,9 +60,8 @@
     "test": "node scripts/test.js --env=jsdom",
     "make-standard": "eslint --fix .",
     "nag": "eslint .",
-    "deploy": "sh scripts/deploy.sh",
-    "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "jest": {
     "collectCoverageFrom": [

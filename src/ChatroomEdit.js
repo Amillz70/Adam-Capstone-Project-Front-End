@@ -61,7 +61,7 @@ class ChatroomEdit extends React.Component {
 
    render() {
      const { chatroom } = this.state
-     // console.log(this.props)
+     
      return (
        <React.Fragment>
          <h1>Edit Chatroom</h1>
