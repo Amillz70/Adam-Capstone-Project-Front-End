@@ -7,34 +7,34 @@ class MessageSignUp extends Component {
     this.state = {
       username: '',
     }
-    this.onSubmit = this.onSubmit.bind(this)
-    this.onChange = this.onChange.bind(this)
+    //   this.onSubmit = this.onSubmit.bind(this)
+    //   this.onChange = this.onChange.bind(this)
+    // }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
-  //   this.handleChange = this.handleChange.bind(this)
-  //   this.handleSubmit = this.handleSubmit.bind(this)
-  // }
-  // handleChange(event) {
-  //   this.setState({username: event.target.value})
-  // }
-  // handleSubmit(event) {
-  //   event.preventDefault()
-  //   console.log(this.props.onSubmit)
-  //   this.props.onSubmit(this.state.username)
-  //   this.setState({ username: '' })
-  // }
-
-  onSubmit(event) {
+  handleChange(event) {
+    this.setState({username: event.target.value})
+  }
+  handleSubmit(event) {
     event.preventDefault()
+    console.log(this.props.onSubmit)
     this.props.onSubmit(this.state.username)
     this.setState({ username: '' })
   }
 
-  onChange(event) {
-    this.setState({ username: event.target.value })
-    if (this.props.onChange) {
-      this.props.onChange()
-    }
-  }
+  // onSubmit(event) {
+  //   event.preventDefault()
+  //   this.props.onSubmit(this.state.username)
+  //   this.setState({ username: '' })
+  // }
+  //
+  // onChange(event) {
+  //   this.setState({ username: event.target.value })
+  //   if (this.props.onChange) {
+  //     this.props.onChange()
+  //   }
+  // }
 
   render() {
     return(

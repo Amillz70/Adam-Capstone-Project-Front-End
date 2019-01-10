@@ -7,6 +7,7 @@ import Layout from './Layout'
 
 import ChatMessage from './components/ChatMessage'
 import MessageSignUp from './components/MessageSignUp'
+import ChatApp from './components/ChatApp'
 
 import { default as Chatkit } from '@pusher/chatkit-server'
 
@@ -77,9 +78,9 @@ class ChatroomShow extends Component {
       view = <ChatMessage  changeView={this.changeView}/>
     } else if (this.state.currentView === 'signup') {
       // console.log('second part of if')
-      view = <MessageSignUp />
+      view = <MessageSignUp onSubmit={this.createUser}/>
     } else if (this.state.currentView === 'chatApp') {
-      view = <h1>ChatApp goes here</h1>
+      view = <ChatApp currentId={this.state.currentId} />
     }
 
     return (
