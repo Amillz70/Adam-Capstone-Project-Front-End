@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@pusher/chatkit-client": "^1.2.0",
+    "@pusher/chatkit-client": "^1.2.2",
     "@pusher/chatkit-server": "^1.0.4",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
