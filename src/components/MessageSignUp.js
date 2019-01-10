@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { withRouter } from 'react-router-dom'
+// import { withRouter } from 'react-router-dom'
 
 class MessageSignUp extends Component {
   constructor(props) {
@@ -7,15 +7,33 @@ class MessageSignUp extends Component {
     this.state = {
       username: '',
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+    this.onChange = this.onChange.bind(this)
   }
-  handleChange(event) {
-    this.setState({username: event.target.value})
-  }
-  handleSubmit(event) {
+  //   this.handleChange = this.handleChange.bind(this)
+  //   this.handleSubmit = this.handleSubmit.bind(this)
+  // }
+  // handleChange(event) {
+  //   this.setState({username: event.target.value})
+  // }
+  // handleSubmit(event) {
+  //   event.preventDefault()
+  //   console.log(this.props.onSubmit)
+  //   this.props.onSubmit(this.state.username)
+  //   this.setState({ username: '' })
+  // }
+
+  onSubmit(event) {
     event.preventDefault()
     this.props.onSubmit(this.state.username)
+    this.setState({ username: '' })
+  }
+
+  onChange(event) {
+    this.setState({ username: event.target.value })
+    if (this.props.onChange) {
+      this.props.onChange()
+    }
   }
 
   render() {
@@ -32,4 +50,4 @@ class MessageSignUp extends Component {
   }
 }
 
-export default withRouter(MessageSignUp)
+export default MessageSignUp
