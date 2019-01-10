@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-// import io from 'socket.io-client'
 import API_BASE_URL from './apiConfig.js'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Layout from './Layout'
 
+import ChatMessage from './components/ChatMessage'
+import MessageSignUp from './components/MessageSignUp'
+import ChatApp from './components/ChatApp'
+
+import { default as Chatkit } from '@pusher/chatkit-server'
+
+const chatkit = new Chatkit({
+  instanceLocator: 'v1:us1:f0038197-834d-4251-b82b-09a876dd2bd8',
+  key: 'a7c6d4ea-fb04-4804-ae82-c8c406ba5068:JbuFK0SJEZe5P1k0GPKPqkpHArqyux2w8dsLRWQN5nc='
+})
 
 class ChatroomShow extends Component {
   constructor (props) {
@@ -13,14 +22,44 @@ class ChatroomShow extends Component {
 
     this.state = {
       user: props.user,
-      chatroom: {
-        title: '',
-        maxNumber:''
-      },
+      // currentView: 'ChatMessage',
+      currentUsername: '',
+      currentId: '',
+      currentView: 'signup'
     }
-    this.chatroom = this.state.chatroom
+    this.changeView = this.changeView.bind(this)
+    this.createUser = this.createUser.bind(this)
   }
 
+  createUser(username) {
+    chatkit.createUser({
+      id: username,
+      name: username
+    })
+      .then((currentUser) => {
+        this.setState({
+          currentUsername: username,
+          currentId: username,
+          currentView: 'chatApp'
+        })
+      }).catch((err) => {
+        if(err.status === 400) {
+          this.setState({
+            currentUser: username,
+            currentId: username,
+            currentView: 'chatApp'
+          })
+        } else {
+          console.log(err.status)
+        }
+      })
+  }
+
+  changeView(view) {
+    this.setState({
+      currentView: view
+    })
+  }
 
   async componentDidMount() {
     const response = await axios.get(`${API_BASE_URL}/chatrooms/${this.props.match.params.id}`,
@@ -29,44 +68,28 @@ class ChatroomShow extends Component {
         'Authorization':`Token token=${this.state.user.token}`}
       }
     )
-    this.setState({chatrooms: response.data.chatrooms})
+    // this.setState({chatrooms: response.data.chatrooms})
   }
 
   render() {
-
-    const {chatroom} = this.state
+    let view =''
+    if (this.state.currentView === 'ChatMessage') {
+      // console.log('first part of if')
+      view = <ChatMessage  changeView={this.changeView}/>
+    } else if (this.state.currentView === 'signup') {
+      // console.log('second part of if')
+      view = <MessageSignUp onSubmit={this.createUser}/>
+    } else if (this.state.currentView === 'chatApp') {
+      view = <ChatApp currentId={this.state.currentId} />
+    }
 
     return (
-      <React.Fragment>
-        <Layout>
-          <h1>Select a Chatroom: {chatroom.title}</h1>
-
-          <p>Max Number of users: {chatroom.maxNumber}</p>
-        </Layout>
-      </React.Fragment>
+      <div className="ChatroomShow">
+        {view}
+      </div>
     )
   }
 }
-//     const chatroomRows = this.state.chatrooms.map(chatroom => {
-//       return (
-//         <tr key={chatroom.id}>
-//           <td>
-//             <Link to={`/chatrooms/${chatroom.id}/show`}>{chatroom.title}</Link></td>
-//         </tr>
-//       )
-//     })
-//     return (
-//       <React.Fragment>
-//         <h1>Chatrooms</h1>
-//
-//         <table>
-//           <tbody>
-//             {chatroomRows}
-//           </tbody>
-//         </table>
-//       </React.Fragment>
-//     )
-//   }
-// }
+
 
 export default withRouter(ChatroomShow)
