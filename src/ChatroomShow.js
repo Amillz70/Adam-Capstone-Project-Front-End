@@ -8,6 +8,7 @@ import Layout from './Layout'
 import ChatMessage from './components/ChatMessage'
 import MessageSignUp from './components/MessageSignUp'
 import ChatApp from './components/ChatApp'
+import WhosOnlineList from './components/WhosOnlineList'
 
 import { default as Chatkit } from '@pusher/chatkit-server'
 
