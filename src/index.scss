@@ -97,9 +97,9 @@ body {
     }
     .message-list  {
       list-style-type: none;
-      padding: 130px 20px;
+      padding: 140px 30px;
       overflow: scroll;
-      max-height: calc(100vh - 150px);
+      max-height: calc(100vh - 300px);
       margin-bottom: 35px;
     }
     .message-sender  {
@@ -109,7 +109,8 @@ body {
     }
     .message-text  {
       margin-bottom: 20px;
-      margin-top: 5px
+      margin-top: 5px;
+
     }
     .message-input  {
       width: 70%;
@@ -131,8 +132,4 @@ body {
       bottom: 0;
       width: 100%;
       display: flex;
-    }
-
-    .chatlist {
-      float:left;
     }
