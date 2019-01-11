@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
 import Input from './Input'
 import MessageList from './MessageList'
+import WhosOnlineList from './WhosOnlineList'
 
 class ChatApp extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class ChatApp extends Component {
         this.setState({ currentUser: currentUser })
         return currentUser.subscribeToRoom({
           roomId: '19377336',
-          messageLimit: 100,
+          messageLimit: 10,
           hooks: {
             onMessage: message => {
               this.setState({
@@ -59,12 +60,36 @@ class ChatApp extends Component {
   }
 
   render() {
+    // const styles = {
+    //   whosOnlineListContainer: {
+    //     width: '100px',
+    //     flex: '1',
+    //     padding: 200,
+    //     backgroundColor: '#2c303b',
+    //     color: 'white',
+    //     flexDirection: 'column',
+    //
+    //   }
+    // }
+
+    // <aside style={styles.whosOnlineListContainer}>
+
     return (
+      // <React.Fragment>
       <div className="chatapp">
-        <h2 className="header">Lets Chat</h2>
-        <MessageList messages={this.state.messages} />
-        <Input className="input-field" onSubmit={this.addMessage} />
+        <aside>
+          <WhosOnlineList className="online-list"
+            currentUser={this.state.currentUser}
+            users={this.state.currentRoom.users}
+          />
+        </aside>
+        <section>
+          <h2 className="header">Lets Chat</h2>
+          <MessageList messages={this.state.messages} />
+          <Input className="input-field" onSubmit={this.addMessage} />
+        </section>
       </div>
+      // </React.Fragment>
     )
   }
 }
