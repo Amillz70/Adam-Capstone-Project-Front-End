@@ -86,6 +86,8 @@ class ChatApp extends Component {
         <section>
           <h2 className="header">Lets Chat</h2>
           <MessageList messages={this.state.messages} />
+        </section>
+        <section>
           <Input className="input-field" onSubmit={this.addMessage} />
         </section>
       </div>
