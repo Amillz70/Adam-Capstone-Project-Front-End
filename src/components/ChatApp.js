@@ -4,6 +4,7 @@ import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
 import Input from './Input'
 import MessageList from './MessageList'
 import WhosOnlineList from './WhosOnlineList'
+import apiUrl from '../apiConfig'
 
 class ChatApp extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class ChatApp extends Component {
       userId: this.props.currentId,
       tokenProvider: new TokenProvider({
         url: 'https://us1.pusherplatform.io/services/chatkit_token_provider/v1/f0038197-834d-4251-b82b-09a876dd2bd8/token'
+        // url: apiUrl,
       })
     })
 

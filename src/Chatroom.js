@@ -64,8 +64,6 @@ class Chatroom extends React.Component {
           <td>
             <p>Chatroom Name:</p>
             <Link to={`/chatrooms/${chatroom._id}`}>{chatroom.title}</Link>
-            <p>Max users:</p>
-            <h6>{chatroom.maxNumber}</h6>
             <br />
           </td>
 

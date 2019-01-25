@@ -23,7 +23,6 @@ class ChatroomShow extends Component {
 
     this.state = {
       user: props.user,
-      // currentView: 'ChatMessage',
       currentUsername: '',
       currentId: '',
       currentView: 'signup'
@@ -69,7 +68,6 @@ class ChatroomShow extends Component {
         'Authorization':`Token token=${this.state.user.token}`}
       }
     )
-    // this.setState({chatrooms: response.data.chatrooms})
   }
 
   render() {
